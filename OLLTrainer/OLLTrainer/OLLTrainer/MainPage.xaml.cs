@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace OLLTrainer
 {
-    public partial class MainPage : TabbedPage
+    public partial class MainPage : TabbedPage  
     {
         public MainPage()
         {

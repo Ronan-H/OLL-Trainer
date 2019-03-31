@@ -1,31 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="OLLTrainer.AlgorithmListPage">
     <ContentPage.Content>
-        <ListView x:Name="caseGroupList" Margin="3">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding Path=GroupName}" />
+        <StackLayout Orientation="Vertical">
+            <Label Text="ABOVE IMAGE"></Label>
+            <Image Source="Assets/oll26.png" WidthRequest="100"/>
+            <Label Text="BELOW IMAGE"></Label>
+            <ListView x:Name="caseGroupList" Margin="3">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Path=GroupName}" />
 
-                            <ListView ItemsSource="{Binding Path=Cases}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Orientation="Vertical">
-                                                <Image Source="{Binding Path=ImagePath}" />
-                                                <Label Text="{Binding Path=PrimaryAlg}" />
-                                                <Label Text="{Binding Path=AlternativeAlg}" />
-                                                <Label Text="{Binding Path=Probability}" />
-                                            </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <ListView ItemsSource="{Binding Path=Cases}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="{Binding Path=ImgSource}" WidthRequest="200" HeightRequest="200"/>
+
+                                                    <Label Text="{Binding Path=PrimaryAlg}" />
+                                                    <Label Text="{Binding Path=AlternativeAlg}" />
+                                                    <Label Text="{Binding Path=Probability}" />
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

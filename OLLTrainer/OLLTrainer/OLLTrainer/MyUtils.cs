@@ -10,8 +10,7 @@ namespace OLLTrainer
     class MyUtils
     {
         public const string JSON_CASES_FILENAME = "cases.json";
-        public const string CASE_IMAGES_DIR = "images/cases/";
-
+        public const string CASE_IMAGES_DIR = "Images/";
         public static List<CaseGroup> LoadCaseGroups()
         {
             List<CaseGroup> caseGroups = new List<CaseGroup>();

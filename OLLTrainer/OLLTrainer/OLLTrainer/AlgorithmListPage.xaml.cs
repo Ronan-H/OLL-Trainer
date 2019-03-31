@@ -29,7 +29,7 @@ namespace OLLTrainer
             {
                 foreach (Case c in caseGroup.Cases)
                 {
-                    c.ImagePath = MyUtils.CASE_IMAGES_DIR + "oll-" + c.CaseNumber + ".png";
+                    c.ImgSource = ImageSource.FromFile("oll" + c.CaseNumber + ".png");
                 }
             }
 

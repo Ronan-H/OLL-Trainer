@@ -11,10 +11,18 @@
 
   <ItemGroup>
     <None Remove="Assets\cases.json" />
+    <None Remove="oll26.png" />
+    <None Remove="oll27.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\cases.json" />
+    <EmbeddedResource Include="oll26.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="oll27.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

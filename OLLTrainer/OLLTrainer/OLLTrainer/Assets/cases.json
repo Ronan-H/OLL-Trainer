@@ -1,10 +1,18 @@
 ﻿[
   {
-    "All Edges Oriented": [
+    "GroupName": "All Edges Oriented",
+
+    "Cases": [
       {
         "CaseNumber": 26,
         "PrimaryAlg": "R U2 R' U' R U' R'",
-        "SecondaryAlg": "y' R' U' R U' R' U2 R",
+        "AlternativeAlg": "y' R' U' R U' R' U2 R",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 27,
+        "PrimaryAlg": "R U R' U R U2' R'",
+        "AlternativeAlg": "y' R' U2' R U R' U R",
         "Probability": "1/54"
       }
     ]

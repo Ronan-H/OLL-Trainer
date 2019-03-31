@@ -9,12 +9,31 @@ using Xamarin.Forms.Xaml;
 
 namespace OLLTrainer
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AlgorithmListPage : ContentPage
-	{
-		public AlgorithmListPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AlgorithmListPage : ContentPage
+    {
+        private List<CaseGroup> caseGroups;
+
+        public AlgorithmListPage()
+        {
+            InitializeComponent();
+            SetDefaults();
+        }
+
+        private void SetDefaults()
+        {
+            caseGroups = MyUtils.LoadCaseGroups();
+
+            // set case image paths
+            foreach (CaseGroup caseGroup in caseGroups)
+            {
+                foreach (Case c in caseGroup.Cases)
+                {
+                    c.ImagePath = MyUtils.CASE_IMAGES_DIR + "oll-" + c.CaseNumber + ".png";
+                }
+            }
+
+            caseGroupList.ItemsSource = caseGroups;
+        }
+    }
 }

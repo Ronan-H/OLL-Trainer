@@ -130,12 +130,67 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="oll1.png" />
+    <Content Include="oll10.png" />
+    <Content Include="oll11.png" />
+    <Content Include="oll12.png" />
+    <Content Include="oll13.png" />
+    <Content Include="oll14.png" />
+    <Content Include="oll15.png" />
+    <Content Include="oll16.png" />
+    <Content Include="oll17.png" />
+    <Content Include="oll18.png" />
+    <Content Include="oll19.png" />
+    <Content Include="oll2.png" />
+    <Content Include="oll20.png" />
+    <Content Include="oll21.png" />
+    <Content Include="oll22.png" />
+    <Content Include="oll23.png" />
+    <Content Include="oll24.png" />
+    <Content Include="oll25.png" />
     <Content Include="oll26.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="oll27.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="oll28.png" />
+    <Content Include="oll29.png" />
+    <Content Include="oll3.png" />
+    <Content Include="oll30.png" />
+    <Content Include="oll31.png" />
+    <Content Include="oll32.png" />
+    <Content Include="oll33.png" />
+    <Content Include="oll34.png" />
+    <Content Include="oll35.png" />
+    <Content Include="oll36.png" />
+    <Content Include="oll37.png" />
+    <Content Include="oll38.png" />
+    <Content Include="oll39.png" />
+    <Content Include="oll4.png" />
+    <Content Include="oll40.png" />
+    <Content Include="oll41.png" />
+    <Content Include="oll42.png" />
+    <Content Include="oll43.png" />
+    <Content Include="oll44.png" />
+    <Content Include="oll45.png" />
+    <Content Include="oll46.png" />
+    <Content Include="oll47.png" />
+    <Content Include="oll48.png" />
+    <Content Include="oll49.png" />
+    <Content Include="oll5.png" />
+    <Content Include="oll50.png" />
+    <Content Include="oll51.png" />
+    <Content Include="oll52.png" />
+    <Content Include="oll53.png" />
+    <Content Include="oll54.png" />
+    <Content Include="oll55.png" />
+    <Content Include="oll56.png" />
+    <Content Include="oll57.png" />
+    <Content Include="oll6.png" />
+    <Content Include="oll7.png" />
+    <Content Include="oll8.png" />
+    <Content Include="oll9.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

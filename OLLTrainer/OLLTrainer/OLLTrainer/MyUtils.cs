@@ -11,9 +11,9 @@ namespace OLLTrainer
     {
         public const string JSON_CASES_FILENAME = "cases.json";
         public const string CASE_IMAGES_DIR = "Images/";
-        public static List<CaseGroup> LoadCaseGroups()
+        public static List<JSONReadCaseGroup> LoadCaseGroups()
         {
-            List<CaseGroup> caseGroups = new List<CaseGroup>();
+            List<JSONReadCaseGroup> caseGroups = new List<JSONReadCaseGroup>();
             string jsonData = null;
 
             try
@@ -34,7 +34,7 @@ namespace OLLTrainer
                 throw;
             }
 
-            caseGroups = JsonConvert.DeserializeObject<List<CaseGroup>>(jsonData);
+            caseGroups = JsonConvert.DeserializeObject<List<JSONReadCaseGroup>>(jsonData);
 
             return caseGroups;
         }

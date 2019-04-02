@@ -12,7 +12,7 @@ namespace OLLTrainer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlgorithmListPage : ContentPage
     {
-        private List<CaseGroup> caseGroups;
+        private List<JSONReadCaseGroup> caseGroups;
 
         public AlgorithmListPage()
         {
@@ -24,16 +24,24 @@ namespace OLLTrainer
         {
             caseGroups = MyUtils.LoadCaseGroups();
 
+            List<CaseGroup> nestedCaseGroups = new List<CaseGroup>();
+
             // set case image paths
-            foreach (CaseGroup caseGroup in caseGroups)
+            foreach (JSONReadCaseGroup caseGroup in caseGroups)
             {
+                CaseGroup nestedCaseGroup = new CaseGroup();
+                nestedCaseGroup.GroupName = caseGroup.GroupName;
+
                 foreach (Case c in caseGroup.Cases)
                 {
                     c.ImgSource = ImageSource.FromFile("oll" + c.CaseNumber + ".png");
+                    nestedCaseGroup.Add(c);
                 }
+
+                nestedCaseGroups.Add(nestedCaseGroup);
             }
 
-            caseGroupList.ItemsSource = caseGroups;
+            caseGroupList.ItemsSource = nestedCaseGroups;
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OLLTrainer
 {
-    class JSONReadCaseGroup
+    class CaseGroup : List<Case>
     {
         public string GroupName { get; set; }
-        public List<Case> Cases { get; set; }
+        public List<Case> Cases => this;
     }
 }

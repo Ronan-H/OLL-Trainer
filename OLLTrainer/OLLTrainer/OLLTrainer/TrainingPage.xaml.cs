@@ -12,9 +12,21 @@ namespace OLLTrainer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TrainingPage : ContentPage
     {
+        private List<List<string>> algsList;
+        private Random random;
+        private Case currentCase;
+
         public TrainingPage ()
         {
             InitializeComponent();
+
+            SetupDefaults();
+        }
+
+        private void SetupDefaults()
+        {
+            random = new Random();
+            algsList = MyUtils.ReadAlgsList();
         }
 
         protected override void OnAppearing()
@@ -49,7 +61,14 @@ namespace OLLTrainer
             }
             else
             {
-                caseScramble.Text = "(Scramble here)";
+                // pick random scramble for a randomly selected case in the training set
+                currentCase = trainingCases[random.Next(trainingCases.Count)];
+                List<string> caseScrambles = algsList[currentCase.CaseNumber - 1];
+                int selectedScrambleIndex = random.Next(caseScrambles.Count);
+                string selectedScramble = caseScrambles[selectedScrambleIndex];
+
+                // update UI with selected case scramble
+                caseScramble.Text = selectedScramble;
             }
         }
     }

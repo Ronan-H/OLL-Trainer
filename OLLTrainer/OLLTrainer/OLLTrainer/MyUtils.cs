@@ -11,7 +11,9 @@ namespace OLLTrainer
     class MyUtils
     {
         public const string JSON_CASES_FILENAME = "cases.json";
+        public const string ALGS_LIST_FILENAME = "algsList.json";
         public const string CASE_IMAGES_DIR = "Images/";
+
         public static void LoadCaseGroups()
         {
             List<JSONReadCaseGroup> caseGroups = new List<JSONReadCaseGroup>();
@@ -55,6 +57,34 @@ namespace OLLTrainer
             }
 
             GlobalVariables.CaseGroups = nestedCaseGroups;
+        }
+
+        public static List<List<string>> ReadAlgsList()
+        {
+            List<List<string>> algsList = new List<List<string>>();
+            string jsonData = null;
+
+            try
+            {
+                var assembly = IntrospectionExtensions.GetTypeInfo(
+                                    typeof(MainPage)).Assembly;
+
+                Stream stream = assembly.GetManifestResourceStream(
+                                "OLLTrainer.Assets.algsList.json");
+
+                using (var reader = new StreamReader(stream))
+                {
+                    jsonData = reader.ReadToEnd();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            algsList = JsonConvert.DeserializeObject<List<List<string>>>(jsonData);
+
+            return algsList;
         }
     }
 }

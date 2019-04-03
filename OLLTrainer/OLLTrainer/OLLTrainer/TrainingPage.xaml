@@ -4,13 +4,13 @@
              x:Class="OLLTrainer.TrainingPage">
     <StackLayout Orientation="Vertical">
         <Label Text="Scramble:" />
+        <Label x:Name="caseScramble" Text="(scramble here)" />
+
         <Label Text="Execution delay?" />
-        
         <Button Text="None" />
         <Button Text="Small (&lt;2s)" />
         <Button Text="Significant (&gt;2s)" />
         <Button Text="I don't remember it" />
-        
         <Label Text="(alg shown here on alg not remembered)" />
 
         <Button Text="Back to Cases" />

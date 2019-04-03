@@ -64,5 +64,365 @@
         "Probability": "1/54"
       }
     ]
+  },
+  {
+    "GroupName": "Squares",
+
+    "Cases": [
+      {
+        "CaseNumber": 5,
+        "PrimaryAlg": "(r' U2' R U R' U r)",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 6,
+        "PrimaryAlg": "(r U2 R' U' R U' r') ",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "C-Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 34,
+        "PrimaryAlg": "(R U R2' U') (R' F R U) R U' F'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 46,
+        "PrimaryAlg": "R' U' (R' F R F') U R",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "W-Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 36,
+        "PrimaryAlg": "(R' U' R U') (R' U R U) l U' R' U x",
+        "AlternativeAlg": "y2 (R U R' F') (R U R' U') (R' F R U') (R' F R F')",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 38,
+        "PrimaryAlg": "(R U R' U) (R U' R' U') (R' F R F')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "Corners Correct, Edges Flipped",
+
+    "Cases": [
+      {
+        "CaseNumber": 28,
+        "PrimaryAlg": "(r U R' U') M (U R U' R')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 57,
+        "PrimaryAlg": "(R U R' U') M' (U R U' r')",
+        "AlternativeAlg": "",
+        "Probability": "1/108"
+      }
+    ]
+  },
+  {
+    "GroupName": "P-Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 31,
+        "PrimaryAlg": "(R' U' F) (U R U' R') F' R",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 32,
+        "PrimaryAlg": "R U B' (U' R' U) (R B R')",
+        "AlternativeAlg": "S (R U R' U') (R' F R f')",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 43,
+        "PrimaryAlg": "y R' U' F' U F R",
+        "AlternativeAlg": "f' (L' U' L U) f",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 44,
+        "PrimaryAlg": "f (R U R' U') f' ",
+        "AlternativeAlg": "y2 F (U R U' R') F",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "I-Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 51,
+        "PrimaryAlg": "f (R U R' U') (R U R' U') f'",
+        "AlternativeAlg": "y2 F (U R U' R') (U R U' R') F'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 56,
+        "PrimaryAlg": "r' U' r (U' R' U R) (U' R' U R) r' U r",
+        "AlternativeAlg": "",
+        "Probability": "1/108"
+      },
+      {
+        "CaseNumber": 52,
+        "PrimaryAlg": "(R' U' R U' R' U) y' (R' U R) B",
+        "AlternativeAlg": "(R U R' U R U') y (R U' R') F'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 55,
+        "PrimaryAlg": "y (R' F R U) (R U' R2' F') R2 U' R' (U R U R')",
+        "AlternativeAlg": "",
+        "Probability": "1/108"
+      }
+    ]
+  },
+  {
+    "GroupName": "Fish Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 9,
+        "PrimaryAlg": "(R U R' U') R' F (R2 U R' U') F'",
+        "AlternativeAlg": "(R' U' R) y r U' r' U r U r'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 10,
+        "PrimaryAlg": "(R U R' U) (R' F R F') (R U2' R')",
+        "AlternativeAlg": "(R U R') y (R' F R U') (R' F' R)",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 35,
+        "PrimaryAlg": "(R U2') (R2' F R F') (R U2' R')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 37,
+        "PrimaryAlg": "F (R U' R' U') (R U R' F')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "Knight Move Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 13,
+        "PrimaryAlg": "(r U' r') (U' r U r') y' (R' U R)",
+        "AlternativeAlg": "F U R U' R2' F' R U (R U' R')",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 14,
+        "PrimaryAlg": "(R' F R) (U R' F' R) (F U' F')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 16,
+        "PrimaryAlg": "(r U r') (R U R' U') (r U' r')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 15,
+        "PrimaryAlg": "(r' U' r) (R' U' R U) (r' U r)",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "Awkward Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 29,
+        "PrimaryAlg": "y (R U R' U') (R U' R') (F' U' F) (R U R')",
+        "AlternativeAlg": "M U (R U R' U')(R' F R F') M'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 30,
+        "PrimaryAlg": "y' F U (R U2 R' U') (R U2 R' U') F'",
+        "AlternativeAlg": "y' (F R' F) (R2 U' R' U') (R U R') F2",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 41,
+        "PrimaryAlg": "(R U R' U R U2' R') F (R U R' U') F'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 42,
+        "PrimaryAlg": "(R' U' R U' R' U2 R) F (R U R' U') F'",
+        "AlternativeAlg": "y (R' F R F') (R' F R F') (R U R' U') (R U R')",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "L-Shapes",
+
+    "Cases": [
+      {
+        "CaseNumber": 48,
+        "PrimaryAlg": "F (R U R' U') (R U R' U') F'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 47,
+        "PrimaryAlg": "F' (L' U' L U) (L' U' L U) F",
+        "AlternativeAlg": "R' U' (R' F R F') (R' F R F') U R",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 49,
+        "PrimaryAlg": "r U' r2' U r2 U r2' U' r",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 50,
+        "PrimaryAlg": "r' U r2 U' r2' U' r2 U r'",
+        "AlternativeAlg": "y' (R U2 R' U' R U' R') F (R U R' U') F'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 53,
+        "PrimaryAlg": "(r' U' R U') (R' U R U') R' U2 r",
+        "AlternativeAlg": "y r' U2' R (U R' U' R) (U R' U r)",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 54,
+        "PrimaryAlg": "(r U R' U) (R U' R' U) R U2' r'",
+        "AlternativeAlg": "y' (r U2 R' U') (R U R' U') R U' r'",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "Lightning Bolts",
+
+    "Cases": [
+      {
+        "CaseNumber": 7,
+        "PrimaryAlg": "(r U R' U R U2' r'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 8,
+        "PrimaryAlg": "(r' U' R U' R' U2 r)",
+        "AlternativeAlg": "y2 l' U' L U' L' U2 l",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 11,
+        "PrimaryAlg": "r' (R2 U R' U R U2 R') U M'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 12,
+        "PrimaryAlg": "M' (R' U' R U' R' U2 R) U' M",
+        "AlternativeAlg": "y F (R U R' U') F' U F (R U R' U') F'",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 39,
+        "PrimaryAlg": "(L F') (L' U' L U) F U' L'",
+        "AlternativeAlg": "F (R U R' U') F' (R' U' R U' R' U2 R)",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 40,
+        "PrimaryAlg": "(R' F) (R U R' U') F' U R",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      }
+    ]
+  },
+  {
+    "GroupName": "Lightning Bolts",
+
+    "Cases": [
+      {
+        "CaseNumber": 1,
+        "PrimaryAlg": "(R U2') (R2' F R F') U2' (R' F R F')",
+        "AlternativeAlg": "",
+        "Probability": "1/108"
+      },
+      {
+        "CaseNumber": 2,
+        "PrimaryAlg": "F (R U R' U') F' f (R U R' U') f'",
+        "AlternativeAlg": "y (r U r') U2 R U2' R' U2 (r U' r')",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 3,
+        "PrimaryAlg": "f (R U R' U') f' U' F (R U R' U') F'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 4,
+        "PrimaryAlg": "f (R U R' U') f' U F (R U R' U') F'",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 18,
+        "PrimaryAlg": "y R U2' (R2' F R F') U2' M' (U R U' r')",
+        "AlternativeAlg": "(r U R' U R U2 r') (r' U' R U' R' U2 r)",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 19,
+        "PrimaryAlg": "M U (R U R' U') M' (R' F R F')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 17,
+        "PrimaryAlg": "(R U R' U) (R' F R F') U2' (R' F R F')",
+        "AlternativeAlg": "",
+        "Probability": "1/54"
+      },
+      {
+        "CaseNumber": 20,
+        "PrimaryAlg": "M U (R U R' U') M2' (U R U' r')",
+        "AlternativeAlg": "(r U R' U') M2' (U R U' R') U' M'",
+        "Probability": "1/216"
+      }
+    ]
   }
 ]

@@ -41,7 +41,7 @@ namespace OLLTrainer
 
             List<CaseGroup> nestedCaseGroups = new List<CaseGroup>();
 
-            // set case image paths
+            // Make adjustments to case data
             foreach (JSONReadCaseGroup caseGroup in caseGroups)
             {
                 CaseGroup nestedCaseGroup = new CaseGroup();
@@ -49,8 +49,12 @@ namespace OLLTrainer
 
                 foreach (Case c in caseGroup.Cases)
                 {
+                    // create ImageSource object from case number
                     c.ImgSource = ImageSource.FromFile("oll" + c.CaseNumber + ".png");
                     nestedCaseGroup.Add(c);
+
+                    // adjust probability string
+                    c.Probability = "Probability = " + c.Probability;
                 }
 
                 nestedCaseGroups.Add(nestedCaseGroup);

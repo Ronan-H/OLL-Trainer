@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OLLTrainer.TrainingPage">
+    <StackLayout Orientation="Vertical">
+        <Label Text="Scramble:" />
+        <Label Text="Execution delay?" />
+        
+        <Button Text="None" />
+        <Button Text="Small (&lt;2s)" />
+        <Button Text="Significant (&gt;2s)" />
+        <Button Text="I don't remember it" />
+        
+        <Label Text="(alg shown here on alg not remembered)" />
+
+        <Button Text="Back to Cases" />
+    </StackLayout>
+</ContentPage>

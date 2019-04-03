@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:OLLTrainer"
              x:Class="OLLTrainer.MainPage">
 
-    <local:AlgorithmListPage Title="Algorithms List" />
-
+    <local:AlgorithmListPage Title="Algorithm List" />
+    <local:TrainingPage Title="Training" />
 </TabbedPage>

@@ -10,19 +10,23 @@ using Xamarin.Forms.Xaml;
 namespace OLLTrainer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AlgorithmListPage : ContentPage
+    public partial class TrainingPage : ContentPage
     {
-        public AlgorithmListPage()
+        public TrainingPage ()
         {
             InitializeComponent();
-            SetDefaults();
         }
 
-        private void SetDefaults()
+        protected override void OnAppearing()
         {
-            MyUtils.LoadCaseGroups();
-            
-            caseGroupList.ItemsSource = GlobalVariables.CaseGroups;
+            base.OnAppearing();
+
+            SetupCase();
+        }
+
+        private void SetupCase()
+        {
+
         }
     }
 }

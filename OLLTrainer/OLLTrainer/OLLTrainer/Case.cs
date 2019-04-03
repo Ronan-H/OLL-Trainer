@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace OLLTrainer
 {
-    class Case
+    public class Case
     {
         public int CaseNumber { get; set; }
         public ImageSource ImgSource { get; set; }

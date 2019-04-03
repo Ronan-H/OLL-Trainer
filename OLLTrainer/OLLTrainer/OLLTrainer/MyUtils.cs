@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using Xamarin.Forms;
 
 namespace OLLTrainer
 {
@@ -11,7 +12,7 @@ namespace OLLTrainer
     {
         public const string JSON_CASES_FILENAME = "cases.json";
         public const string CASE_IMAGES_DIR = "Images/";
-        public static List<JSONReadCaseGroup> LoadCaseGroups()
+        public static void LoadCaseGroups()
         {
             List<JSONReadCaseGroup> caseGroups = new List<JSONReadCaseGroup>();
             string jsonData = null;
@@ -36,7 +37,24 @@ namespace OLLTrainer
 
             caseGroups = JsonConvert.DeserializeObject<List<JSONReadCaseGroup>>(jsonData);
 
-            return caseGroups;
+            List<CaseGroup> nestedCaseGroups = new List<CaseGroup>();
+
+            // set case image paths
+            foreach (JSONReadCaseGroup caseGroup in caseGroups)
+            {
+                CaseGroup nestedCaseGroup = new CaseGroup();
+                nestedCaseGroup.GroupName = caseGroup.GroupName;
+
+                foreach (Case c in caseGroup.Cases)
+                {
+                    c.ImgSource = ImageSource.FromFile("oll" + c.CaseNumber + ".png");
+                    nestedCaseGroup.Add(c);
+                }
+
+                nestedCaseGroups.Add(nestedCaseGroup);
+            }
+
+            GlobalVariables.CaseGroups = nestedCaseGroups;
         }
     }
 }

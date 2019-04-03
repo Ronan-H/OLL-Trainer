@@ -26,16 +26,16 @@
                             </Grid.ColumnDefinitions>
 
                             <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                                <Label Text="Training"></Label>
-                                <Switch />
+                                <Label Text="Training" />
+                                <Switch IsToggled="{Binding Path=IsTraining}" />
                             </StackLayout>
 
                             <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-                                <Label Text="Learned"></Label>
-                                <Switch />
+                                <Label Text="Learned" />
+                                <Switch IsToggled="{Binding Path=IsLearned}" />
                             </StackLayout>
 
-                            <Image Grid.Row="0" Grid.Column="3" Source="{Binding Path=ImgSource}" WidthRequest="100" HeightRequest="100" Margin="5"/>
+                            <Image Grid.Row="0" Grid.Column="3" Source="{Binding Path=ImgSource}" WidthRequest="100" HeightRequest="100" Margin="5" />
 
                             <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
                                 <Label Text="{Binding Path=PrimaryAlg}" />

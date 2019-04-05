@@ -11,6 +11,7 @@ namespace OLLTrainer
     class MyUtils
     {
         public const string JSON_CASES_FILENAME = "cases.json";
+        public const string JSON_CASE_PROGRESS_FILENAME = "caseProgress.json";
         public const string ALGS_LIST_FILENAME = "algsList.json";
         public const string CASE_IMAGES_DIR = "Images/";
 
@@ -89,6 +90,51 @@ namespace OLLTrainer
             algsList = JsonConvert.DeserializeObject<List<List<string>>>(jsonData);
 
             return algsList;
+        }
+
+        public static void SaveCaseProgress(List<UserCaseProgress> saveList)
+        {
+            string path = Environment.GetFolderPath(
+                Environment.SpecialFolder.LocalApplicationData);
+            string filename = Path.Combine(path, JSON_CASE_PROGRESS_FILENAME);
+            using (var writer = new StreamWriter(filename, false))
+            {
+                string jsonText = JsonConvert.SerializeObject(saveList);
+                writer.WriteLine(jsonText);
+            }
+        }
+
+        public static void LoadCaseProgress()
+        {
+            List<UserCaseProgress> myList = new List<UserCaseProgress>();
+            string jsonText;
+
+            try  // reading the localApplicationFolder first
+            {
+                string path = Environment.GetFolderPath(
+                                Environment.SpecialFolder.LocalApplicationData);
+                string filename = Path.Combine(path, JSON_CASE_PROGRESS_FILENAME);
+                using (var reader = new StreamReader(filename))
+                {
+                    jsonText = reader.ReadToEnd();
+                }
+
+                GlobalVariables.CaseProgress = JsonConvert.DeserializeObject<List<UserCaseProgress>>(jsonText);
+            }
+            catch // fallback is to generate a new list with default values
+            {
+                for (int i = 1; i <= 57; i++)
+                {
+                    UserCaseProgress caseProgress = new UserCaseProgress();
+
+                    caseProgress.CaseNumber = i;
+                    caseProgress.CaseCompetence = 0;
+                    caseProgress.IsTraining = false;
+                    caseProgress.IsLearned = false;
+
+                    myList.Add(caseProgress);
+                }
+            }
         }
     }
 }

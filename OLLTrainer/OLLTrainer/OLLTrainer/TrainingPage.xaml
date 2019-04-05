@@ -11,8 +11,6 @@
         <Button Text="Small (&lt;2s)" />
         <Button Text="Significant (&gt;2s)" />
         <Button Text="I don't remember it" />
-        <Label Text="(alg shown here on alg not remembered)" />
-
-        <Button Text="Back to Cases" />
+        <Label Text="(alg shown here on alg not remembered)" IsVisible="False" />
     </StackLayout>
 </ContentPage>

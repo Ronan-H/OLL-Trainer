@@ -71,5 +71,43 @@ namespace OLLTrainer
                 caseScramble.Text = selectedScramble;
             }
         }
+
+        private void ApplyCaseProgress(int reactionBracket)
+        {
+            UserCaseProgress caseProgress = GlobalVariables.CaseProgress[currentCase.CaseNumber - 1];
+
+            double target = GlobalVariables.ProgressCalcVars.TARGETS[reactionBracket];
+
+            double currentComp = caseProgress.CaseCompetence;
+            double compIncrease = (target - currentComp) * GlobalVariables.ProgressCalcVars.PROGRESS_RATE;
+            double newComp = currentComp + compIncrease;
+
+            caseProgress.CaseCompetence = newComp;
+
+            // save progress JSON
+            MyUtils.SaveCaseProgress(GlobalVariables.CaseProgress);
+
+            caseConfidence.Text = newComp.ToString();
+        }
+
+        private void NoExecDelayButtonClicked(object sender, EventArgs e)
+        {
+            ApplyCaseProgress(0);
+        } 
+
+        private void SmallExecDelayButtonClicked(object sender, EventArgs e)
+        {
+            ApplyCaseProgress(1);
+        }
+
+        private void SignificantExecDelayButtonClicked(object sender, EventArgs e)
+        {
+            ApplyCaseProgress(2);
+        }
+
+        private void DontRememberButtonClicked(object sender, EventArgs e)
+        {
+            ApplyCaseProgress(3);
+        }
     }
 }

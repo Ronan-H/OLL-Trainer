@@ -7,10 +7,12 @@
         <Label x:Name="caseScramble" Text="(scramble here)" />
 
         <Label Text="Execution delay?" />
-        <Button Text="None" />
-        <Button Text="Small (&lt;2s)" />
-        <Button Text="Significant (&gt;2s)" />
-        <Button Text="I don't remember it" />
+        <Button Text="None" Clicked="NoExecDelayButtonClicked" />
+        <Button Text="Small (&lt;2s)" Clicked="SmallExecDelayButtonClicked" />
+        <Button Text="Significant (&gt;2s)" Clicked="SignificantExecDelayButtonClicked" />
+        <Button Text="I don't remember it" Clicked="DontRememberButtonClicked" />
         <Label Text="(alg shown here on alg not remembered)" IsVisible="False" />
+
+        <Label x:Name="caseConfidence" Text="placeholder" />
     </StackLayout>
 </ContentPage>

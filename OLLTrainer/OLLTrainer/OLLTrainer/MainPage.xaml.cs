@@ -12,6 +12,8 @@ namespace OLLTrainer
         public MainPage()
         {
             InitializeComponent();
+
+            MyUtils.LoadCaseProgress();
         }
     }
 }

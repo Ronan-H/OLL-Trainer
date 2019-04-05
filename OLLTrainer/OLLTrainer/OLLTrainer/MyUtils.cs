@@ -114,6 +114,7 @@ namespace OLLTrainer
                 string path = Environment.GetFolderPath(
                                 Environment.SpecialFolder.LocalApplicationData);
                 string filename = Path.Combine(path, JSON_CASE_PROGRESS_FILENAME);
+
                 using (var reader = new StreamReader(filename))
                 {
                     jsonText = reader.ReadToEnd();
@@ -134,6 +135,8 @@ namespace OLLTrainer
 
                     myList.Add(caseProgress);
                 }
+
+                SaveCaseProgress(myList);
             }
         }
     }

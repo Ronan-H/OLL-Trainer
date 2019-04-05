@@ -38,6 +38,10 @@
                             <Image Grid.Row="0" Grid.Column="3" Source="{Binding Path=ImgSource}" WidthRequest="100" HeightRequest="100" Margin="5" />
 
                             <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Case" />
+                                    <Label Text="{Binding Path=CaseNumber}" />
+                                </StackLayout>
                                 <Label Text="{Binding Path=PrimaryAlg}" />
                                 <Label Text="{Binding Path=AlternativeAlg}" />
                                 <Label Text="{Binding Path=Probability}" />

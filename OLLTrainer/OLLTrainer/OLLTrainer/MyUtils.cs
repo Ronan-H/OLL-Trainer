@@ -120,7 +120,7 @@ namespace OLLTrainer
                     jsonText = reader.ReadToEnd();
                 }
 
-                GlobalVariables.CaseProgress = JsonConvert.DeserializeObject<List<UserCaseProgress>>(jsonText);
+                myList = JsonConvert.DeserializeObject<List<UserCaseProgress>>(jsonText);
             }
             catch // fallback is to generate a new list with default values
             {
@@ -138,6 +138,8 @@ namespace OLLTrainer
 
                 SaveCaseProgress(myList);
             }
+
+            GlobalVariables.CaseProgress = myList;
         }
     }
 }

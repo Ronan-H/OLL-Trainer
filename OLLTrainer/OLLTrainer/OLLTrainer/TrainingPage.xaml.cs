@@ -33,10 +33,25 @@ namespace OLLTrainer
         {
             base.OnAppearing();
 
-            SetupCase();
+            PickNewCaseAndScramble();
         }
 
-        private void SetupCase()
+        private void PickNewCaseAndScramble()
+        {
+            List<Case> trainingCases = GetTrainingSetCases();
+
+            if (trainingCases.Count == 0)
+            {
+                // no cases in the training set
+                caseScramble.Text = "Please mark cases as \"Training\" first!";
+                return;
+            }
+
+            SelectRandomCaseWithCompetenceWeighting(trainingCases);
+            caseConfidence.Text = "Case: " + currentCase.CaseNumber.ToString() + " Comp " + GlobalVariables.CaseProgress[currentCase.CaseNumber - 1].CaseCompetence.ToString();
+        }
+
+        private List<Case> GetTrainingSetCases()
         {
             List<CaseGroup> caseGroups = GlobalVariables.CaseGroups;
 
@@ -54,22 +69,52 @@ namespace OLLTrainer
                 }
             }
 
-            if (trainingCases.Count == 0)
-            {
-                // no cases in the training set
-                caseScramble.Text = "Please mark cases as \"Training\" first!";
-            }
-            else
-            {
-                // pick random scramble for a randomly selected case in the training set
-                currentCase = trainingCases[random.Next(trainingCases.Count)];
-                List<string> caseScrambles = algsList[currentCase.CaseNumber - 1];
-                int selectedScrambleIndex = random.Next(caseScrambles.Count);
-                string selectedScramble = caseScrambles[selectedScrambleIndex];
+            return trainingCases;
+        }
 
-                // update UI with selected case scramble
-                caseScramble.Text = selectedScramble;
+        private void SelectRandomCaseFromTrainingSet(List<Case> trainingCases)
+        {
+            Case randomCase = trainingCases[random.Next(trainingCases.Count)];
+            SetCaseAndPickRandomCaseScramble(randomCase);
+        }
+
+        private void SelectRandomCaseWithCompetenceWeighting(List<Case> trainingCases)
+        {
+            List<UserCaseProgress> CaseProgress = GlobalVariables.CaseProgress;
+
+            double probTotal = 0;
+            foreach (Case c in trainingCases)
+            {
+                double inverseComp = 1 - CaseProgress[c.CaseNumber - 1].CaseCompetence;
+                probTotal += inverseComp;
             }
+
+            double randNum = random.NextDouble() * probTotal;
+
+            double probCount = 0;
+            foreach (Case c in trainingCases)
+            {
+                double inverseComp = 1 - CaseProgress[c.CaseNumber - 1].CaseCompetence;
+
+                if (randNum >= probCount && randNum <= probCount + inverseComp)
+                {
+                    SetCaseAndPickRandomCaseScramble(c);
+                    return;
+                }
+
+                probCount += inverseComp;
+            }
+        }
+
+        private void SetCaseAndPickRandomCaseScramble(Case c)
+        {
+            currentCase = c;
+            List<string> caseScrambles = algsList[currentCase.CaseNumber - 1];
+            int selectedScrambleIndex = random.Next(caseScrambles.Count);
+            string selectedScramble = caseScrambles[selectedScrambleIndex];
+
+            // update UI with selected case scramble
+            caseScramble.Text = selectedScramble;
         }
 
         private void ApplyCaseProgress(int reactionBracket)
@@ -86,28 +131,33 @@ namespace OLLTrainer
 
             // save progress JSON
             MyUtils.SaveCaseProgress(GlobalVariables.CaseProgress);
+        }
 
-            caseConfidence.Text = newComp.ToString();
+        private void RecognitionDelayButtonPressed(int reactionBracket)
+        {
+            ApplyCaseProgress(reactionBracket);
+            // move on to the next scramble
+            PickNewCaseAndScramble();
         }
 
         private void NoExecDelayButtonClicked(object sender, EventArgs e)
         {
-            ApplyCaseProgress(0);
+            RecognitionDelayButtonPressed(0);
         } 
 
         private void SmallExecDelayButtonClicked(object sender, EventArgs e)
         {
-            ApplyCaseProgress(1);
+            RecognitionDelayButtonPressed(1);
         }
 
         private void SignificantExecDelayButtonClicked(object sender, EventArgs e)
         {
-            ApplyCaseProgress(2);
+            RecognitionDelayButtonPressed(2);
         }
 
         private void DontRememberButtonClicked(object sender, EventArgs e)
         {
-            ApplyCaseProgress(3);
+            RecognitionDelayButtonPressed(3);
         }
     }
 }

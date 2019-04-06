@@ -15,6 +15,7 @@ namespace OLLTrainer
         private List<List<string>> algsList;
         private Random random;
         private Case currentCase;
+        private List<Case> trainingSet;
 
         public TrainingPage ()
         {
@@ -33,30 +34,39 @@ namespace OLLTrainer
         {
             base.OnAppearing();
 
+            LoadTrainingSetCases();
             PickNewCaseAndScramble();
+
+            SetRecognitionTimeButtonsEnabled(IsTrainingSetEmpty() == false);
+        }
+
+        private void SetRecognitionTimeButtonsEnabled(bool state)
+        {
+            noDelayButton.IsEnabled = state;
+            smallDelayButton.IsEnabled = state;
+            bigDelayButton.IsEnabled = state;
+            dontRememberButton.IsEnabled = state;
         }
 
         private void PickNewCaseAndScramble()
         {
-            List<Case> trainingCases = GetTrainingSetCases();
-
-            if (trainingCases.Count == 0)
+            if (IsTrainingSetEmpty())
             {
                 // no cases in the training set
                 caseScramble.Text = "Please mark cases as \"Training\" first!";
                 return;
             }
 
-            SelectRandomCaseWithCompetenceWeighting(trainingCases);
+            SelectRandomCaseWithCompetenceWeighting();
             caseConfidence.Text = "Case: " + currentCase.CaseNumber.ToString() + " Comp " + GlobalVariables.CaseProgress[currentCase.CaseNumber - 1].CaseCompetence.ToString();
         }
 
-        private List<Case> GetTrainingSetCases()
+        private void LoadTrainingSetCases()
         {
             List<CaseGroup> caseGroups = GlobalVariables.CaseGroups;
 
             // create a list of cases that are in the training set
-            List<Case> trainingCases = new List<Case>();
+            trainingSet = new List<Case>();
 
             foreach (CaseGroup caseGroup in caseGroups)
             {
@@ -64,26 +74,29 @@ namespace OLLTrainer
                 {
                     if (c.IsTraining)
                     {
-                        trainingCases.Add(c);
+                        trainingSet.Add(c);
                     }
                 }
             }
-
-            return trainingCases;
         }
 
-        private void SelectRandomCaseFromTrainingSet(List<Case> trainingCases)
+        private bool IsTrainingSetEmpty()
         {
-            Case randomCase = trainingCases[random.Next(trainingCases.Count)];
+            return (trainingSet.Count == 0);
+        }
+
+        private void SelectRandomCaseFromTrainingSet()
+        {
+            Case randomCase = trainingSet[random.Next(trainingSet.Count)];
             SetCaseAndPickRandomCaseScramble(randomCase);
         }
 
-        private void SelectRandomCaseWithCompetenceWeighting(List<Case> trainingCases)
+        private void SelectRandomCaseWithCompetenceWeighting()
         {
             List<UserCaseProgress> CaseProgress = GlobalVariables.CaseProgress;
 
             double probTotal = 0;
-            foreach (Case c in trainingCases)
+            foreach (Case c in trainingSet)
             {
                 double inverseComp = 1 - CaseProgress[c.CaseNumber - 1].CaseCompetence;
                 probTotal += inverseComp;
@@ -92,7 +105,7 @@ namespace OLLTrainer
             double randNum = random.NextDouble() * probTotal;
 
             double probCount = 0;
-            foreach (Case c in trainingCases)
+            foreach (Case c in trainingSet)
             {
                 double inverseComp = 1 - CaseProgress[c.CaseNumber - 1].CaseCompetence;
 

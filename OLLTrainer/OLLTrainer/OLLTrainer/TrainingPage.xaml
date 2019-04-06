@@ -2,17 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="OLLTrainer.TrainingPage">
-    <StackLayout Orientation="Vertical">
-        <Label Text="Scramble:" />
-        <Label x:Name="caseScramble" Text="(scramble here)" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="large" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <Style x:Key="largeBlue" TargetType="Label" BasedOn="{StaticResource large}">
+                <Setter Property="TextColor" Value="DarkSlateBlue" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources> 
 
-        <Label Text="Execution delay?" />
-        <Button Text="None" Clicked="NoExecDelayButtonClicked" />
-        <Button Text="Small (&lt;2s)" Clicked="SmallExecDelayButtonClicked" />
-        <Button Text="Significant (&gt;2s)" Clicked="SignificantExecDelayButtonClicked" />
-        <Button Text="I don't remember it" Clicked="DontRememberButtonClicked" />
-        <Label Text="(alg shown here on alg not remembered)" IsVisible="False" />
+    <AbsoluteLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" Padding="5" AbsoluteLayout.LayoutBounds="0.5, 0, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+            <Label Text="Scramble:" VerticalOptions="Center" Style="{StaticResource large}"/>
+            <Label x:Name="caseScramble" Text="(scramble here)" VerticalOptions="Center" Style="{StaticResource largeBlue}" />
 
-        <Label x:Name="caseConfidence" Text="placeholder" />
-    </StackLayout>
+            <Label Text="Execution delay?" VerticalOptions="Center" Style="{StaticResource large}" />
+            <Button x:Name="noDelayButton" Text="None" Clicked="NoExecDelayButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
+            <Button x:Name="smallDelayButton" Text="Small (&lt;2s)" Clicked="SmallExecDelayButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
+            <Button x:Name="bigDelayButton" Text="Significant (&gt;2s)" Clicked="SignificantExecDelayButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
+            <Button x:Name="dontRememberButton" Text="I don't remember it" Clicked="DontRememberButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
+            <Label Text="(alg shown here on alg not remembered)" IsVisible="False" VerticalOptions="Center" Style="{StaticResource large}" />
+
+            <Label x:Name="caseConfidence" Text="placeholder" />
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>

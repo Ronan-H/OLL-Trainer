@@ -148,12 +148,8 @@
     <Content Include="oll23.png" />
     <Content Include="oll24.png" />
     <Content Include="oll25.png" />
-    <Content Include="oll26.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="oll27.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="oll26.png" />
+    <Content Include="oll27.png" />
     <Content Include="oll28.png" />
     <Content Include="oll29.png" />
     <Content Include="oll3.png" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
@@ -36,6 +37,11 @@ namespace OLLTrainer
             set
             {
                 _isLearned = value;
+
+                if (_isLearned)
+                {
+                    IsTraining = false;
+                }
             }
         }
     }

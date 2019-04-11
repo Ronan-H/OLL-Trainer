@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="OLLTrainer.AlgorithmListPage">
     <ContentPage.Content>
-        <ListView x:Name="caseGroupList" IsGroupingEnabled="True">
+        <ListView x:Name="caseGroupList" IsGroupingEnabled="True" HasUnevenRows="True">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -13,40 +13,87 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid ColumnSpacing="15">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="4*" />
-                            </Grid.ColumnDefinitions>
+                        <OnPlatform x:TypeArguments="View">
+                            <On Platform="UWP">
+                                <Grid ColumnSpacing="15" RowSpacing="10" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="40*" />
+                                    </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                                <Label Text="Training" />
-                                <Switch IsToggled="{Binding Path=IsTraining}" />
-                            </StackLayout>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                                        <Label Text="Training" />
+                                        <Switch IsToggled="{Binding Path=IsTraining}" />
+                                    </StackLayout>
 
-                            <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-                                <Label Text="Learned" />
-                                <Switch IsToggled="{Binding Path=IsLearned}" />
-                            </StackLayout>
+                                    <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Vertical">
+                                        <Label Text="Learned" />
+                                        <Switch IsToggled="{Binding Path=IsLearned}" />
+                                    </StackLayout>
 
-                            <Image Grid.Row="0" Grid.Column="3" Source="{Binding Path=ImgSource}" WidthRequest="100" HeightRequest="100" Margin="5" />
+                                    <Image Grid.Row="0" Grid.Column="3"
+                                   Source="{Binding Path=ImgSource}"
+                                   HeightRequest="100" Aspect="AspectFit"
+                                   Margin="3" />
 
-                            <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Case" />
-                                    <Label Text="{Binding Path=CaseNumber}" />
-                                </StackLayout>
-                                <Label Text="{Binding Path=PrimaryAlg}" />
-                                <Label Text="{Binding Path=AlternativeAlg}" />
-                                <Label Text="{Binding Path=Probability}" />
-                            </StackLayout>
-                        </Grid>
+                                    <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Case" />
+                                            <Label Text="{Binding Path=CaseNumber}" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Path=PrimaryAlg}" />
+                                        <Label Text="{Binding Path=AlternativeAlg}" />
+                                        <Label Text="{Binding Path=Probability}" />
+                                    </StackLayout>
+                                </Grid>
+                            </On>
+
+                            <On Platform="Android">
+                                <Grid ColumnSpacing="15" RowSpacing="10" VerticalOptions="FillAndExpand" Margin="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="Training" />
+                                                <Switch IsToggled="{Binding Path=IsTraining}" />
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="Learned" />
+                                                <Switch IsToggled="{Binding Path=IsLearned}" />
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <Image Source="{Binding Path=ImgSource}"
+                                           Aspect="AspectFit"
+                                           Margin="3" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Case" />
+                                            <Label Text="{Binding Path=CaseNumber}" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Path=PrimaryAlg}" />
+                                        <Label Text="{Binding Path=AlternativeAlg}" />
+                                        <Label Text="{Binding Path=Probability}" />
+                                    </StackLayout>
+                                </Grid>
+                            </On>
+                        </OnPlatform>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

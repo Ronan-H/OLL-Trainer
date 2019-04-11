@@ -51,10 +51,11 @@ namespace OLLTrainer
                 foreach (Case c in caseGroup.Cases)
                 {
                     // create ImageSource object from case number
-                    c.ImgSource = ImageSource.FromFile("oll" + c.CaseNumber + ".png");
+                    string imgFilename = "oll" + c.CaseNumber + ".png";
+                    c.ImgSource = Device.RuntimePlatform == Device.Android ? ImageSource.FromFile(imgFilename) : ImageSource.FromFile(imgFilename);
                     nestedCaseGroup.Add(c);
 
-                    // adjust probability string
+                    // adjust probability stringe
                     c.Probability = "Probability = " + c.Probability;
                 }
 

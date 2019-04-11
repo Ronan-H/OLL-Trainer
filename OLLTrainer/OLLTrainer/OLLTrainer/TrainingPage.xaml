@@ -17,7 +17,9 @@
         <StackLayout Orientation="Vertical" Padding="5" AbsoluteLayout.LayoutBounds="0.5, 0, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
             <Label Text="Scramble:" VerticalOptions="Center" Style="{StaticResource large}"/>
             <Label x:Name="caseScramble" Text="(scramble here)" VerticalOptions="Center" Style="{StaticResource largeBlue}" />
+        </StackLayout>
 
+        <StackLayout Orientation="Vertical" Padding="5" AbsoluteLayout.LayoutBounds="0.5, 0.9, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
             <Label Text="Execution delay?" VerticalOptions="Center" Style="{StaticResource large}" />
             <Button x:Name="noDelayButton" Text="None" Clicked="NoExecDelayButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
             <Button x:Name="smallDelayButton" Text="Small (&lt;2s)" Clicked="SmallExecDelayButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />

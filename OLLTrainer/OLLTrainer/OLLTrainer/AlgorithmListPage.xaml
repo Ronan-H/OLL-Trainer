@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="OLLTrainer.AlgorithmListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="groupNameStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <ListView x:Name="caseGroupList" IsGroupingEnabled="True" HasUnevenRows="True">
+        <ListView x:Name="caseGroupList" IsGroupingEnabled="True" HasUnevenRows="True" Margin="15">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Path=GroupName}" />
+                        <Label Text="{Binding Path=GroupName}" Style="{StaticResource groupNameStyle}" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.GroupHeaderTemplate>
@@ -38,9 +46,9 @@
                                     </StackLayout>
 
                                     <Image Grid.Row="0" Grid.Column="3"
-                                   Source="{Binding Path=ImgSource}"
-                                   HeightRequest="100" Aspect="AspectFit"
-                                   Margin="3" />
+                                       Source="{Binding Path=ImgSource}"
+                                       HeightRequest="100" Aspect="AspectFit"
+                                       Margin="3" />
 
                                     <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
@@ -55,7 +63,7 @@
                             </On>
 
                             <On Platform="Android">
-                                <Grid ColumnSpacing="15" RowSpacing="10" VerticalOptions="FillAndExpand" Margin="10">
+                                <Grid ColumnSpacing="15" RowSpacing="10" VerticalOptions="FillAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>

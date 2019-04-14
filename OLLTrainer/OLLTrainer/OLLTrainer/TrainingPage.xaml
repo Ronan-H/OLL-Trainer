@@ -27,7 +27,7 @@
             <Button x:Name="dontRememberButton" Text="I don't remember it" Clicked="DontRememberButtonClicked" VerticalOptions="Center" Style="{StaticResource large}" />
             <Label Text="(alg shown here on alg not remembered)" IsVisible="False" VerticalOptions="Center" Style="{StaticResource large}" />
 
-            <Label x:Name="caseConfidence" Text="placeholder" />
+            <Label x:Name="caseConfidence" Text="" />
         </StackLayout>
     </AbsoluteLayout>
 </ContentPage>

@@ -54,11 +54,12 @@ namespace OLLTrainer
             {
                 // no cases in the training set
                 caseScramble.Text = "Please mark cases as \"Training\" first!";
+                caseConfidence.Text = "";
                 return;
             }
 
             SelectRandomCaseWithCompetenceWeighting();
-            caseConfidence.Text = "Case: " + currentCase.CaseNumber.ToString() + " Comp " + GlobalVariables.CaseProgress[currentCase.CaseNumber - 1].CaseCompetence.ToString();
+            caseConfidence.Text = "Case: " + currentCase.CaseNumber.ToString() + " Competence: " + GlobalVariables.CaseProgress[currentCase.CaseNumber - 1].CaseCompetence.ToString();
         }
 
         private void LoadTrainingSetCases()
@@ -72,7 +73,7 @@ namespace OLLTrainer
             {
                 foreach (Case c in caseGroup)
                 {
-                    if (c.IsTraining)
+                    if (c.IsTraining && !c.IsLearned)
                     {
                         trainingSet.Add(c);
                     }

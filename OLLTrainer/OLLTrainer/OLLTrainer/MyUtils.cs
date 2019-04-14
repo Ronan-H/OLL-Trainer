@@ -15,9 +15,15 @@ namespace OLLTrainer
         public const string ALGS_LIST_FILENAME = "algsList.json";
         public const string CASE_IMAGES_DIR = "Images/";
 
+        /// <summary>
+        /// Loads information for all cases in from a JSON file
+        /// </summary>
         public static void LoadCaseGroups()
         {
-            List<JSONReadCaseGroup> caseGroups = new List<JSONReadCaseGroup>();
+            // create list
+            // JSONReadCaseGroup objects are temporary for parsing and will
+            // later be converted to CaseGroup objects
+            List<JSONReadCaseGroup> jsonCaseGroups = new List<JSONReadCaseGroup>();
             string jsonData = null;
 
             try
@@ -31,38 +37,43 @@ namespace OLLTrainer
                 using (var reader = new StreamReader(stream))
                 {
                     jsonData = reader.ReadToEnd();
-                }
+                } 
             }
             catch (Exception)
             {
                 throw;
             }
 
-            caseGroups = JsonConvert.DeserializeObject<List<JSONReadCaseGroup>>(jsonData);
+            // parse case groups from JSON into JSONReadCaseGroup objects
+            jsonCaseGroups = JsonConvert.DeserializeObject<List<JSONReadCaseGroup>>(jsonData);
 
-            List<CaseGroup> nestedCaseGroups = new List<CaseGroup>();
+            // create a list of CaseGroups; most details will be taken from the
+            // parse JSONReadCaseGroup objects but some further fields will be generated
+            List<CaseGroup> caseGroups = new List<CaseGroup>();
 
-            // Make adjustments to case data
-            foreach (JSONReadCaseGroup caseGroup in caseGroups)
+            // copy fields into CaseGroup objects and generate some others
+            foreach (JSONReadCaseGroup jsonCaseGroup in jsonCaseGroups)
             {
-                CaseGroup nestedCaseGroup = new CaseGroup();
-                nestedCaseGroup.GroupName = caseGroup.GroupName;
+                CaseGroup caseGroup = new CaseGroup();
+                // copy GroupName
+                caseGroup.GroupName = jsonCaseGroup.GroupName;
 
-                foreach (Case c in caseGroup.Cases)
+                foreach (Case c in jsonCaseGroup.Cases)
                 {
                     // create ImageSource object from case number
                     string imgFilename = "oll" + c.CaseNumber + ".png";
-                    c.ImgSource = Device.RuntimePlatform == Device.Android ? ImageSource.FromFile(imgFilename) : ImageSource.FromFile(imgFilename);
-                    nestedCaseGroup.Add(c);
+                    c.ImgSource = ImageSource.FromFile(imgFilename);
+                    caseGroup.Add(c);
 
-                    // adjust probability stringe
+                    // adjust probability string
                     c.Probability = "Probability = " + c.Probability;
                 }
 
-                nestedCaseGroups.Add(nestedCaseGroup);
+                caseGroups.Add(caseGroup);
             }
 
-            GlobalVariables.CaseGroups = nestedCaseGroups;
+            // assign case groups to global variable for use across multiple pages
+            GlobalVariables.CaseGroups = caseGroups;
         }
 
         public static List<List<string>> ReadAlgsList()

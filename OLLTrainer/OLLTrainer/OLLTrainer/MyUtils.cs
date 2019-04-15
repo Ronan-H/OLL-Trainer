@@ -36,6 +36,7 @@ namespace OLLTrainer
 
                 using (var reader = new StreamReader(stream))
                 {
+                    // read JSON data
                     jsonData = reader.ReadToEnd();
                 } 
             }
@@ -76,8 +77,13 @@ namespace OLLTrainer
             GlobalVariables.CaseGroups = caseGroups;
         }
 
+        /// <summary>
+        /// Reads the list of case scrambles in from a JSON file.
+        /// </summary>
+        /// <returns>Nested list of scramble algorithms for each case</returns>
         public static List<List<string>> ReadAlgsList()
         {
+            // create the nested list
             List<List<string>> algsList = new List<List<string>>();
             string jsonData = null;
 
@@ -91,6 +97,7 @@ namespace OLLTrainer
 
                 using (var reader = new StreamReader(stream))
                 {
+                    // read JSON data
                     jsonData = reader.ReadToEnd();
                 }
             }
@@ -99,47 +106,66 @@ namespace OLLTrainer
                 throw;
             }
 
+            // parse JSON into a nested list of case algorithms
             algsList = JsonConvert.DeserializeObject<List<List<string>>>(jsonData);
 
             return algsList;
         }
 
+        /// <summary>
+        /// Save's the users progress of each case (UserCaseProgress objects) to a JSON
+        /// file to be loaded back in when the application starts.
+        /// </summary>
+        /// <param name="saveList">List of UserCaseProgress objects to save as JSON</param>
         public static void SaveCaseProgress(List<UserCaseProgress> saveList)
         {
+            // find application data path unique to the device platform
             string path = Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData);
             string filename = Path.Combine(path, JSON_CASE_PROGRESS_FILENAME);
             using (var writer = new StreamWriter(filename, false))
             {
+                // serialize list as JSON
                 string jsonText = JsonConvert.SerializeObject(saveList);
+                // write JSON to file
                 writer.WriteLine(jsonText);
             }
         }
 
+        /// <summary>
+        /// Loads the user's progress of each case (UserCaseProgress objects) back in from file.
+        /// </summary>
         public static void LoadCaseProgress()
         {
+            // create list of UserCaseProgress objects
             List<UserCaseProgress> myList = new List<UserCaseProgress>();
             string jsonText;
 
-            try  // reading the localApplicationFolder first
+            try  // attempt to read in previously saved JSON data
             {
+                // find application data path unique to the device platform
                 string path = Environment.GetFolderPath(
                                 Environment.SpecialFolder.LocalApplicationData);
                 string filename = Path.Combine(path, JSON_CASE_PROGRESS_FILENAME);
 
                 using (var reader = new StreamReader(filename))
                 {
+                    // read json data
                     jsonText = reader.ReadToEnd();
                 }
 
+                // parse JSON into a list of UserCaseProgress objects
                 myList = JsonConvert.DeserializeObject<List<UserCaseProgress>>(jsonText);
             }
-            catch // fallback is to generate a new list with default values
+            catch // no JSON data was saved previously, generate defaults
             {
+                // generate defaults for the 57 OLL cases
                 for (int i = 1; i <= 57; i++)
                 {
+                    // create UserCaseProgress object
                     UserCaseProgress caseProgress = new UserCaseProgress();
 
+                    // default values
                     caseProgress.CaseNumber = i;
                     caseProgress.CaseCompetence = 0;
                     caseProgress.IsTraining = false;
@@ -148,9 +174,11 @@ namespace OLLTrainer
                     myList.Add(caseProgress);
                 }
 
+                // save the list immediately to file
                 SaveCaseProgress(myList);
             }
 
+            // load the list into a global variable for use across multiple pages
             GlobalVariables.CaseProgress = myList;
         }
     }

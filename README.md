@@ -86,3 +86,35 @@ The algorithms had to be reversed and converted into JSON format.
 ## Software used to develop this app
 
 The app was developed with Microsoft Visual Studio Community 2017 Version 15.9.5
+
+## Testing
+
+Some of the manual tests that were performed:
+
+Field | Details
+------|--------
+**Test description:** | App warns user when no training cases are selected
+**Procedure:** | Do not mark any cases for training, switch to training tab
+**Expected result:** | "Please mark cases as "Training" first!, exec. buttons greyed about
+**Actual result:** | Matches expected
+  |  
+**Test description:** | Given scramble matches a training case
+**Procedure:** | Mark one case for training, switch to training page
+**Expected result:** | Scramble matches the case selected above
+**Actual result:** | Matches expected
+  |  
+**Test description:** | Learned cases are not trained
+**Procedure:** | Mark some cases as both "Training" and "Learned", switch to training tab
+**Expected result:** | "Please mark cases as "Training" first!, exec. buttons greyed about
+**Actual result:** | Matches expected
+  |  
+**Test description:** | Competence value approaches exec. delay target
+**Procedure:** | Mark one case for training, switch to training page
+**Expected result:** | Clicking an exec. delay button causes case comp. to approach button's target value
+**Actual result:** | Matches expected
+  |  
+**Test description:** | App is more likely to choose cases with a lower competence value
+**Procedure:** | Mark two cases for training, switch to training page
+**Procedure, cont:** | Always click "None" button for one case and "I don't remember it" button for the other
+**Expected result:** | The "I don't remember it" case is selected for training more and more often over time
+**Actual result:** | Matches expected

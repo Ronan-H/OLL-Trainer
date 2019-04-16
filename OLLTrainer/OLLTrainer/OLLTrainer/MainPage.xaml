@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:OLLTrainer"
              x:Class="OLLTrainer.MainPage">
-
+    
+    <!-- create pages -->
     <local:AlgorithmListPage Title="Algorithm List" />
     <local:TrainingPage Title="Training" />
 </TabbedPage>

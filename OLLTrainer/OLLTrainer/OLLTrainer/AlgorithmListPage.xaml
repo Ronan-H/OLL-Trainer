@@ -9,7 +9,9 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <!-- Case group list view -->
         <ListView x:Name="caseGroupList" IsGroupingEnabled="True" HasUnevenRows="True" Margin="15">
+            <!-- Case group header -->
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -21,6 +23,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <!-- Case information, showing a slightly different layout on UWP and Android devices -->
                         <OnPlatform x:TypeArguments="View">
                             <On Platform="UWP">
                                 <Grid ColumnSpacing="15" RowSpacing="10" VerticalOptions="FillAndExpand">
@@ -28,6 +31,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <!-- using dummy columns either side of the actual grid for formatting -->
                                         <ColumnDefinition Width="30*" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -35,6 +39,7 @@
                                         <ColumnDefinition Width="40*" />
                                     </Grid.ColumnDefinitions>
 
+                                    <!-- training and learned switches -->
                                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                                         <Label Text="Training" />
                                         <Switch IsToggled="{Binding Path=IsTraining}" />
@@ -45,11 +50,13 @@
                                         <Switch IsToggled="{Binding Path=IsLearned}" />
                                     </StackLayout>
 
+                                    <!-- image of case -->
                                     <Image Grid.Row="0" Grid.Column="3"
                                        Source="{Binding Path=ImgSource}"
                                        HeightRequest="100" Aspect="AspectFit"
                                        Margin="3" />
 
+                                    <!-- case number, algorithms, and probability -->
                                     <StackLayout Grid.Row="0" Grid.Column="4" Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="Case" />
@@ -71,8 +78,9 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-
+                                    
                                     <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                        <!-- training and learned switches -->
                                         <StackLayout Orientation="Horizontal">
                                             <StackLayout Orientation="Vertical">
                                                 <Label Text="Training" />
@@ -85,11 +93,13 @@
                                             </StackLayout>
                                         </StackLayout>
 
+                                        <!-- image of case -->
                                         <Image Source="{Binding Path=ImgSource}"
                                            Aspect="AspectFit"
                                            Margin="3" />
                                     </StackLayout>
 
+                                    <!-- case number, algorithms, and probability -->
                                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="Case" />

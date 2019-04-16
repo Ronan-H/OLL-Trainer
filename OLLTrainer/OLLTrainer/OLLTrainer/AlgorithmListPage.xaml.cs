@@ -20,8 +20,8 @@ namespace OLLTrainer
 
         private void SetDefaults()
         {
+            // load case group data to be shown on the UI
             MyUtils.LoadCaseGroups();
-            
             caseGroupList.ItemsSource = GlobalVariables.CaseGroups;
         }
     }

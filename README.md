@@ -75,3 +75,14 @@ I had to resize the images and convert the information into JSON format.
 I took the case scrambles from [here](https://github.com/Roman-/oll_trainer/blob/master/scripts/algsmap.js).
 
 The algorithms had to be reversed and converted into JSON format.
+
+## Differences between the finished app and the submitted design document
+**Aside from small aesthetic differences etc...**
+
+* Although the app tracks how well the user knows each case and selects cases to train accordingly, case competence does not decay in real time (I decided this was too much of a gimmick and probably tricky to implement effectivly)
+
+* The "Test me" and "Back to Cases" buttons were not implemented since the user can switch tabs at the top of each page
+
+## Software used to develop this app
+
+The app was developed with Microsoft Visual Studio Community 2017 Version 15.9.5
